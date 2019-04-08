@@ -28,20 +28,17 @@ var stringifyJSON = function(obj) {
     return '[' + output + ']';  
   }
   if (obj.constructor === Object) {
-    if (obj === undefined || typeof obj === 'function') {
-      continue;
-    }
-    var output = {};
+    var output = '';
 
     for (var key in obj) {
-      output[key] = stringifyJSON(obj[key]);
-    }  
-     
-    var string = '';
-    for (var key in output) {
-      string = string + key + output[key];
-    } 
+      output = output + key + ':' + obj[key];
+    }
+    
 
-    return '{' + string '}';
+    
+     
+    
+
+    return '{' + output + '}';
   }
 };
