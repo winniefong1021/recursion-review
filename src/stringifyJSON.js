@@ -31,13 +31,15 @@ var stringifyJSON = function(obj) {
     var output = '';
 
     for (var key in obj) {
-      output = output + key + ':' + obj[key];
+      if (obj[key] === undefined || typeof obj[key] === 'function') {
+         continue; 
+      }
+      if (output.length === 0) {
+        output = output + stringifyJSON(key) + ':' + stringifyJSON(obj[key]);
+      } else {
+        output = output + ',' + stringifyJSON(key) + ':' + stringifyJSON(obj[key]);
+      }
     }
-    
-
-    
-     
-    
 
     return '{' + output + '}';
   }
