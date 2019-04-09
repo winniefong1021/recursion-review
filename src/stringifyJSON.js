@@ -3,8 +3,7 @@
 
 // but you don't so you're going to write it from scratch:
 
-var stringifyJSON = function(obj) {
-  
+var stringifyJSON = function (obj) {
   if (typeof obj === 'number' || typeof obj === 'boolean') {
     return '' + obj;
   }
@@ -24,8 +23,8 @@ var stringifyJSON = function(obj) {
       var ele = obj[i];
       output.push(stringifyJSON(ele));
     }
-    
-    return '[' + output + ']';  
+
+    return '[' + output + ']';
   }
 
   if (obj.constructor === Object) {
@@ -33,7 +32,7 @@ var stringifyJSON = function(obj) {
 
     for (var key in obj) {
       if (obj[key] === undefined || typeof obj[key] === 'function') {
-         continue; 
+        continue;
       }
 
       if (output.length === 0) {
